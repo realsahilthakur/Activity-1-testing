@@ -1,0 +1,38 @@
+name: CI/CD pipeline activity
+
+# Controls when the workflow will run
+on:
+  # Trigger on push or pull request events to the "master" branch
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+  # Allows manual execution from the Actions tab
+  workflow_dispatch:
+
+# Define the job(s) to run
+jobs:
+  build:
+    # Run on the latest available Ubuntu runner
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the source code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Run a simple echo command
+      - name: Run a one-line script
+        run: echo "Hello, world! This is sahil thakur"
+
+      # Step 3: Run multiple echo commands
+      - name: Run a multi-line script
+        run: |
+          echo "Add other actions to build,"
+          echo "test, and deploy your project."
+
+      # Instructional note: After editing this file,
+      # 1. Provide a meaningful commit message (e.g., 'Added basic CI workflow')
+      # 2. Commit changes to the master/main branch
+      # 3. GitHub Actions will automatically trigger the workflow on push
